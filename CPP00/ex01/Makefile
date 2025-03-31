@@ -11,11 +11,18 @@ COLOUR_RESET = \033[0m
 # Dossier des fichiers objets
 ODIR = obj
 
-# Nom du fichier source et exécutable
+# Nom de l'exécutable
 NAME = phonebook
-SRCS = main.cpp
+
+# Fichiers sources et headers
+SRCS = main.cpp \
+       utils.cpp
+
 HEADERS = header.hpp
-OFILES = $(ODIR)/$(NAME).o
+
+# Fichiers objets
+OFILES = $(ODIR)/main.o \
+         $(ODIR)/utils.o
 
 # Compilateur et options
 CC = g++
