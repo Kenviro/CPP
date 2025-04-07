@@ -17,7 +17,7 @@ SRCS = $(NAME).cpp
 OFILES = $(ODIR)/$(NAME).o
 
 # Compilateur et options
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 .PHONY: all clean fclean re

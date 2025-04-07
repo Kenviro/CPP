@@ -15,17 +15,21 @@ ODIR = obj
 NAME = phonebook
 
 # Fichiers sources et headers
-SRCS = main.cpp \
-       utils.cpp
+SRCS =	main.cpp \
+		Contact.cpp \
+		Phonebook.cpp \
+		ADD_utils.cpp \
 
 HEADERS = header.hpp
 
 # Fichiers objets
-OFILES = $(ODIR)/main.o \
-         $(ODIR)/utils.o
+OFILES =	$(ODIR)/main.o \
+			$(ODIR)/Contact.o \
+			$(ODIR)/Phonebook.o \
+			$(ODIR)/ADD_utils.o
 
 # Compilateur et options
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 .PHONY: all clean fclean re
