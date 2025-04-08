@@ -12,15 +12,16 @@ COLOUR_RESET = \033[0m
 ODIR = obj
 
 # Nom de l'exécutable
-NAME = zombieHorde
+NAME = Violence
 
 # Fichiers sources et headers
 SRCS =	main.cpp \
-		Zombie.cpp \
-		newZombie.cpp \
-		randomChump.cpp
+		HumanA.cpp \
+		HumanB.cpp \
+		Weapon.cpp
 
-HEADERS = Zombie.hpp
+HEADERS =	HumanA.hpp \
+			HumanB.hpp
 
 # Génération automatique des .o à partir des .cpp
 OFILES = $(SRCS:%.cpp=$(ODIR)/%.o)

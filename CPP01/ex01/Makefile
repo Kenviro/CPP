@@ -17,8 +17,7 @@ NAME = zombieHorde
 # Fichiers sources et headers
 SRCS =	main.cpp \
 		Zombie.cpp \
-		newZombie.cpp \
-		randomChump.cpp
+		zombieHorde.cpp
 
 HEADERS = Zombie.hpp
 

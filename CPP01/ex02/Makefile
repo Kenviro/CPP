@@ -12,15 +12,10 @@ COLOUR_RESET = \033[0m
 ODIR = obj
 
 # Nom de l'exécutable
-NAME = zombieHorde
+NAME = brain
 
 # Fichiers sources et headers
-SRCS =	main.cpp \
-		Zombie.cpp \
-		newZombie.cpp \
-		randomChump.cpp
-
-HEADERS = Zombie.hpp
+SRCS =	main.cpp 
 
 # Génération automatique des .o à partir des .cpp
 OFILES = $(SRCS:%.cpp=$(ODIR)/%.o)
@@ -35,7 +30,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 all: $(NAME)
 
 # Compilation des fichiers objets
-$(ODIR)/%.o: %.cpp $(HEADERS)
+$(ODIR)/%.o: %.cpp 
 	@mkdir -p $(ODIR)
 	@echo "$(YELLOW)$(BOLD)💾 Compilation de $<...$(COLOUR_RESET)"
 	$(CC) $(CFLAGS) -c $< -o $@
