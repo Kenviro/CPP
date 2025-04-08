@@ -12,10 +12,13 @@ COLOUR_RESET = \033[0m
 ODIR = obj
 
 # Nom de l'exécutable
-NAME = Replace
+NAME = harlFilter
 
 # Fichiers sources et headers
-SRCS =	main.cpp 
+SRCS =	main.cpp \
+		Harl.cpp
+
+HEADERS = Harl.hpp
 
 # Génération automatique des .o à partir des .cpp
 OFILES = $(SRCS:%.cpp=$(ODIR)/%.o)
