@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:22:38 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/08 10:29:46 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:55:47 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main()
 	std::string &stringREF = string;
 
 	std::cout << "adresse of string: " << &string << std::endl
-			  << "adresse of stringPTR: " << &stringPTR << std::endl
+			  << "adresse of stringPTR: " << stringPTR << std::endl
 			  << "adresse of stringREF: " << &stringREF << std::endl;
 
 	std::cout << "value of string: " << string << std::endl

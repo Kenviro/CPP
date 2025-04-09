@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:04:27 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/08 16:45:39 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:57:01 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class HumanB {
 		void	attack();
 		void	setWeapon(Weapon &new_weapon);
 		
-
+	
 	HumanB(std::string name);
 };
 

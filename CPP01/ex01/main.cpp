@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:16:55 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/08 10:20:54 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:55:01 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main()
 {
-	int N = 3;
+	int N = 10;
 	Zombie* Horde;
 	
 	Horde = zombieHorde(N, "Pedro");
