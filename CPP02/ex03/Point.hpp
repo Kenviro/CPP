@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:37:46 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/11 15:35:04 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/12 12:55:30 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,19 @@ class Point {
 	private:
 		const Fixed x;
 		const Fixed y;
+		Point& operator=(const Point&);
 
 	public:
 		
 		Point();
 		Point(const float srcX, const float srcY);
 		Point(const Point& src);
-		Point& operator=(const Point&) = delete;
 		~Point();
-
-		bool bsp(Point const a, Point const b, Point const c, Point const point);
+		Fixed getX() const;
+		Fixed getY() const;
 
 };
+
+bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif

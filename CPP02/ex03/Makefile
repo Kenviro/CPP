@@ -16,9 +16,12 @@ NAME = BSP
 
 # Fichiers sources et headers
 SRCS =	main.cpp \
-		Fixed.cpp
+		Fixed.cpp \
+		bsp.cpp \
+		Point.cpp
 
-HEADERS = Fixed.hpp
+HEADERS =	Fixed.hpp \
+			Point.hpp
 
 # Génération automatique des .o à partir des .cpp
 OFILES = $(SRCS:%.cpp=$(ODIR)/%.o)
