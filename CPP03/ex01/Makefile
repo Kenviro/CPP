@@ -12,13 +12,15 @@ COLOUR_RESET = \033[0m
 ODIR = obj
 
 # Nom de l'exécutable
-NAME = ClapTrap
+NAME = ScravTrap
 
 # Fichiers sources et headers
 SRCS =	main.cpp \
-		ClapTrap.cpp
+		ClapTrap.cpp \
+		ScravTrap.cpp
 
-HEADERS =	ClapTrap.hpp
+HEADERS =	ClapTrap.hpp \
+			ScravTrap.hpp
 
 # Génération automatique des .o à partir des .cpp
 OFILES = $(SRCS:%.cpp=$(ODIR)/%.o)
