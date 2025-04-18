@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScravTrap.hpp                                      :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 16:33:26 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/16 10:42:16 by ktintim-         ###   ########.fr       */
+/*   Created: 2025/04/16 11:00:37 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/04/16 15:19:15 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SCRAVTRAP_HPP
-# define SCRAVTRAP_HPP
+# ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
+#include "ScravTrap.hpp"
 #include "ClapTrap.hpp"
 
-class ScravTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 
 	public:
+	
+		FragTrap(std::string name);
+		~FragTrap();
+		FragTrap(const FragTrap& src);
+		FragTrap &operator=(const FragTrap& cpy);
 
-		ScravTrap(std::string name);
-		~ScravTrap();
-		ScravTrap(const ScravTrap& src);
-		ScravTrap &operator=(const ScravTrap& cpy);
-
-		void guardGate();
+		void highFivesGuys(void);
 		void attack(const std::string& target);
 };
 
-# endif
+#endif

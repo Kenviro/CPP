@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScravTrap.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 16:33:26 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/16 10:42:16 by ktintim-         ###   ########.fr       */
+/*   Created: 2025/04/14 13:54:47 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/04/16 11:40:45 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SCRAVTRAP_HPP
-# define SCRAVTRAP_HPP
+#include "ScravTrap.hpp"
+#include "FragTrap.hpp"
 
-#include "ClapTrap.hpp"
+int	main()
+{
+	ClapTrap a("Clappy");
+	a.attack("enemy1");
+	a.takeDamage(12);
 
-class ScravTrap : public ClapTrap {
+	std::cout << "----------------------" << std::endl;
 
-	public:
+	ScravTrap b("Scrappy");
+	b.attack("enemy2");
+	b.beRepaired(12);
+	b.guardGate();
 
-		ScravTrap(std::string name);
-		~ScravTrap();
-		ScravTrap(const ScravTrap& src);
-		ScravTrap &operator=(const ScravTrap& cpy);
+	std::cout << "----------------------" << std::endl;
 
-		void guardGate();
-		void attack(const std::string& target);
-};
+	FragTrap c("Fraga");
+	c.attack("Scrappy");
+	c.takeDamage(15);
+	c.highFivesGuys();
 
-# endif
+	
+	return 0;
+}

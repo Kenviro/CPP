@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 11:06:27 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/16 10:46:40 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/16 11:27:37 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 
 /*************************Constructor & Destructor******************************/
 
-ScravTrap::ScravTrap(std::string name) : ClapTrap(name) {
+ScravTrap::ScravTrap(std::string name) : ClapTrap(name)
+{
 	hitPoint = 100;
 	energyPoint = 50;
 	attackDamage = 20;
 	std::cout << "ScavTrap constructor called for " << name << std::endl;
 }
 
-ScravTrap::~ScravTrap() {
+ScravTrap::~ScravTrap()
+{
 	std::cout << "ScavTrap destructor called for " << name << std::endl;
 }
 
 ScravTrap::ScravTrap(const ScravTrap& src) : ClapTrap(src) {}
 
-ScravTrap& ScravTrap::operator=(const ScravTrap& cpy) {
+ScravTrap& ScravTrap::operator=(const ScravTrap& cpy)
+{
 	ClapTrap::operator=(cpy);
 	return *this;
 }

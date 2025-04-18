@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:33:26 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/16 10:42:16 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:49:43 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScravTrap : public ClapTrap {
+class ScravTrap : virtual public ClapTrap {
 
 	public:
 

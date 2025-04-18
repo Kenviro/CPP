@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:54:49 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/14 16:06:05 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/16 10:50:23 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ class ClapTrap {
 		int			hitPoint;
 		int			energyPoint;
 		int			attackDamage;
-		void		setName(std::string new_name);
-		void		setHitPoint(int amount);
-		void		setEnergyPoint(int amount);
-		void		setAttackDamage(int amount);
 
 	public:
 		

@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:54:44 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/15 16:10:03 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/16 10:49:25 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ ClapTrap::~ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap& src)
 {
-	setName(src.getName());
-	setHitPoint(src.getHitPoint());
-	setEnergyPoint(src.getEnergyPoint());
-	setAttackDamage(src.getAttackDamage());
+	name = src.getName();
+	hitPoint = src.getHitPoint();
+	energyPoint = src.getEnergyPoint();
+	attackDamage = src.getAttackDamage();
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap& cpy)
 {
 	if (this != &cpy)
 	{
-		setName(cpy.getName());
-		setHitPoint(cpy.getHitPoint());
-		setEnergyPoint(cpy.getEnergyPoint());
-		setAttackDamage(cpy.getAttackDamage());
+		name = cpy.getName();
+		hitPoint = cpy.getHitPoint();
+		energyPoint = cpy.getEnergyPoint();
+		attackDamage = cpy.getAttackDamage();
 	}
 	return *this;
 }
@@ -66,26 +66,6 @@ int	ClapTrap::getAttackDamage() const
 	return attackDamage;
 }
 
-void	ClapTrap::setName(std::string new_name)
-{
-	name = new_name;
-}
-
-void	ClapTrap::setHitPoint(int amount)
-{
-	hitPoint = amount;
-}
-
-void	ClapTrap::setEnergyPoint(int amount)
-{
-	energyPoint = amount;
-}
-
-void	ClapTrap::setAttackDamage(int amount)
-{
-	attackDamage = amount;	
-}
-
 /*******************************Member function************************************/
 
 void ClapTrap::attack(const std::string& target)
@@ -101,7 +81,7 @@ void ClapTrap::attack(const std::string& target)
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << "ClapTrap " << name << " took " << amount << " point of damage" << std::endl;
-	setHitPoint(getHitPoint() - amount);
+	hitPoint -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -111,6 +91,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << name << " repair itself for " << amount << 
 					 " hitpoint" << std::endl;
 		energyPoint--;
-		setHitPoint(getHitPoint() + amount);
+		hitPoint += amount;
 	}
 }
