@@ -15,10 +15,19 @@ ODIR = obj
 NAME = Animal
 
 # Fichiers sources et headers
-SRCS =	main.cpp 
+SRCS =	main.cpp \
+		Animal.cpp \
+		Cat.cpp \
+		Dog.cpp \
+		wrongAnimal.cpp \
+		wrongCat.cpp
 
 
-HEADERS =	
+HEADERS =	Animal.hpp \
+			Dog.hpp \
+			Cat.hpp \
+			wrongAnimal.hpp \
+			wrongCat.hpp
 
 # Génération automatique des .o à partir des .cpp
 OFILES = $(SRCS:%.cpp=$(ODIR)/%.o)
