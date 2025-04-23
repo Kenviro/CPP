@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:18:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/23 15:24:35 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:35:29 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ WrongAnimal::~WrongAnimal()
 {
 	std::cout << "the wrong animal has been killed" << std::endl;
 }
-
 
 /********************************Getter & Setter********************************/
 
