@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 10:06:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/24 10:58:50 by ktintim-         ###   ########.fr       */
+/*   Created: 2025/04/23 10:23:43 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/04/24 11:17:03 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef DOG_HPP
-# define DOG_HPP
+# ifndef CAT_HPP
+# define CAT_HPP
 
+#include "Brain.hpp"
 #include "Animal.hpp"
 
-class Dog : public Animal {
+class Cat : public Animal {
+
+	private:
+
+		Brain* brain;
 
 	public:
 
-		Dog();
-		Dog(const Dog& cpy);
-		Dog& operator=(const Dog& src);
-		~Dog();
+		Cat();
+		Cat(const Cat& cpy);
+		Cat& operator=(const Cat& src);
+		~Cat();
 
-		void		makeSound() const;
+		void	addIdeas(std::string new_ideas) const;
+		void	removeIdea(int idea_index) const;
+		void	makeSound() const;
+		void	printIdeas(int index) const;
 };
 
 #endif

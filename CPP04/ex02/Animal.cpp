@@ -1,47 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 10:08:33 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/24 10:58:56 by ktintim-         ###   ########.fr       */
+/*   Created: 2025/04/23 09:35:56 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/04/23 14:09:38 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Animal.hpp"
 
 /***************************Constructor & Destructor****************************/
 
-Dog::Dog() : Animal()
+Animal::Animal()
 {
-	this->type = "dog";
-	std::cout << "A dog has been created" << std::endl;
+	std::cout << "Animal has been created" << std::endl;
 }
 
-Dog::Dog(const Dog& cpy) : Animal()
+Animal::~Animal()
 {
-	this->type = cpy.type;
+	std::cout << "Animal has been destroyed" << std::endl;	
 }
 
-Dog &Dog::operator=(const Dog& src)
+Animal::Animal(const Animal& cpy)
+{
+	type = cpy.type;
+}
+
+Animal &Animal::operator=(const Animal& src)
 {
 	if (this != &src)
 	{
-		this->type = src.type;
+		type = src.type;
 	}
 	return *this;
 }
 
-Dog::~Dog()
+/********************************Getter & Setter********************************/
+
+std::string Animal::getType() const
 {
-	std::cout << "The dog is die" << std::endl;
+	return this->type;
 }
 
 /*********************************Member function*******************************/
 
-void	Dog::makeSound() const
+void	Animal::makeSound() const
 {
-	std::cout << "Wouaf Wouaf" << std::endl;
+	std::cout << "Some generic Animal sound" << std::endl;
 }

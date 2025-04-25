@@ -1,47 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 10:08:33 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/24 10:58:56 by ktintim-         ###   ########.fr       */
+/*   Created: 2025/04/25 14:40:55 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/04/25 14:50:00 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "../includes/AMateria.hpp"
 
 /***************************Constructor & Destructor****************************/
 
-Dog::Dog() : Animal()
-{
-	this->type = "dog";
-	std::cout << "A dog has been created" << std::endl;
-}
+AMateria::AMateria(std::string const & type) {}
 
-Dog::Dog(const Dog& cpy) : Animal()
-{
-	this->type = cpy.type;
-}
+/********************************Getter & Setter********************************/
 
-Dog &Dog::operator=(const Dog& src)
+std::string const & AMateria::getType() const
 {
-	if (this != &src)
-	{
-		this->type = src.type;
-	}
-	return *this;
-}
-
-Dog::~Dog()
-{
-	std::cout << "The dog is die" << std::endl;
+	return type;
 }
 
 /*********************************Member function*******************************/
 
-void	Dog::makeSound() const
+AMateria* AMateria::clone() const
 {
-	std::cout << "Wouaf Wouaf" << std::endl;
+	
+}
+
+void use(ICharacter& target)
+{
+	
 }
