@@ -6,14 +6,17 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 10:48:48 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/25 10:49:11 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:23:55 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-#include "mHeader.hpp"
+#include <string>
+#include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {

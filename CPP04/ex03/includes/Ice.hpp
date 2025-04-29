@@ -6,14 +6,15 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:17:52 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/28 14:03:05 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:16:57 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef ICE_HPP
 # define ICE_HPP
 
-#include "mHeader.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 class Ice : public AMateria {
 
@@ -24,7 +25,8 @@ class Ice : public AMateria {
 		Ice& operator=(const Ice& src);
 		~Ice();
 
-		void use(ICharacter& target);
+		void		use(ICharacter& target);
+		AMateria*	clone() const;
 
 };
 

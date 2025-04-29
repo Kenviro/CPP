@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:23:32 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/28 16:06:01 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:46:39 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /***************************Constructor & Destructor****************************/
 
-Ice::Ice() : AMateria("Ice")
+Ice::Ice() : AMateria("ice")
 {
 	std::cout << "Ice has been created" << std::endl;
 }
@@ -40,6 +40,11 @@ Ice::~Ice()
 /********************************Getter & Setter********************************/
 
 /*********************************Member function*******************************/
+
+AMateria* Ice::clone() const
+{
+	return new Ice(*this);
+}
 
 void Ice::use(ICharacter& target)
 {

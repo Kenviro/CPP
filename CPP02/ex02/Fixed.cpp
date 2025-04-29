@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:31:35 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/11 13:56:26 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:20:01 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ Fixed Fixed::min(const Fixed&a, const Fixed& b)
 
 int	Fixed::getRawBits() const
 {
-	return (_fixedPointValue); 
+	return (_fixedPointValue);
 }
 
 int	Fixed::toInt() const

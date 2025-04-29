@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMateria.hpp                                       :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 10:44:03 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/25 11:02:34 by ktintim-         ###   ########.fr       */
+/*   Created: 2025/04/29 10:51:55 by ktintim-          #+#    #+#             */
+/*   Updated: 2025/04/29 14:17:36 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef IMATERIA_HPP
-# define IMATERIA_HPP
+# ifndef IMATERIASOURCE_HPP
+# define IMATERIASOURCE_HPP
 
-#include "mHeader.hpp"
+#include "AMateria.hpp"
 
 class IMateriaSource
 {

@@ -6,14 +6,15 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:08:22 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/28 16:00:12 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:54:14 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef CHARACTER_HPP
+# ifndef CHARACTER_HP
 # define CHARACTER_HPP
 
-#include "mHeader.hpp"
+#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class Character : public ICharacter {
 

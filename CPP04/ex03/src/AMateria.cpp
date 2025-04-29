@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:40:55 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/28 13:59:02 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:44:22 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 /***************************Constructor & Destructor****************************/
 
-AMateria::AMateria(std::string const & type) : _type(type) {}
+AMateria::AMateria(std::string const & type) : _type(type) {
+	// std::cout << "AMateria debug creation" << std::endl;
+}
 
 AMateria::AMateria(const AMateria& cpy)
 {
@@ -43,8 +45,3 @@ std::string const & AMateria::getType() const
 }
 
 /*********************************Member function*******************************/
-
-void AMateria::use(ICharacter& target)
-{
-	
-}
