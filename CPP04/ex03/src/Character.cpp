@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:08:50 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/29 16:07:28 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:48:05 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 class ICharacter;
 
 /***************************Constructor & Destructor****************************/
+
+Character::Character() {};
 
 Character::Character(std::string _name) : ICharacter(), name(_name), unequipedCount(0), equipedCount(0)
 {

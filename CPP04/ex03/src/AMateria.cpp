@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:40:55 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/29 14:44:22 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:50:12 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,8 @@ std::string const & AMateria::getType() const
 }
 
 /*********************************Member function*******************************/
+
+void AMateria::use(ICharacter& target)
+{
+	(void)target;
+}

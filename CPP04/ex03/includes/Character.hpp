@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:08:22 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/29 15:54:14 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:47:42 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Character : public ICharacter {
 		AMateria*	unequiped[100];
 		int			unequipedCount;
 		int			equipedCount;
+
+		Character();
 
 	public:
 

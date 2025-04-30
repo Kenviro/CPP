@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:05:24 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:43:26 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:44:48 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	main()
 {
 	const Animal* i = new Dog();
-	const Animal* j = new Cat();
+	const Animal* j = new Dog(*(dynamic_cast<const Dog*>(i)));
 	
 	std::cout << "----------" << std::endl;
 	const Dog* realdog = dynamic_cast<const Dog*>(i);
@@ -26,7 +26,8 @@ int	main()
 		realdog->addIdeas("play with a ball");
 		realdog->printIdeas(4);
 	}
-	const Cat* realcat = dynamic_cast<const Cat*>(j);
+	delete i;
+	const Dog* realcat = dynamic_cast<const Dog*>(j);
 	if (realcat)
 	{
 		realcat->addIdeas("be usefull");
@@ -35,7 +36,6 @@ int	main()
 	}
 	std::cout << "----------" << std::endl;
 
-	delete i;
 	delete j;
 
 	std::cout << "<-------------------------------------------->" << std::endl;

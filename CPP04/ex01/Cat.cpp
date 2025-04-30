@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 10:24:38 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:19:29 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:37:59 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ Cat::Cat() : Animal()
 Cat::Cat(const Cat& cpy) : Animal()
 {
 	this->type = cpy.type;
-	*this->brain = *cpy.brain;
+	if (this->brain)
+	{
+		delete this->brain;
+		this->brain = 0;
+	}
+	if (cpy.brain)
+	{
+		this->brain = new Brain(*cpy.brain);
+	}
 }
 
 Cat &Cat::operator=(const Cat& src)
@@ -32,7 +40,15 @@ Cat &Cat::operator=(const Cat& src)
 	if (this != &src)
 	{
 		this->type = src.type;
-		*this->brain = *src.brain;
+		if (this->brain)
+		{
+			delete this->brain;
+			this->brain = 0;
+		}
+		if (src.brain)
+		{
+			this->brain = new Brain(*src.brain);
+		}
 	}
 	return *this;
 }

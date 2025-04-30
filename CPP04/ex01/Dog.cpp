@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 10:08:33 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:19:35 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:37:35 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ Dog::Dog() : Animal()
 Dog::Dog(const Dog& cpy) : Animal()
 {
 	this->type = cpy.type;
-	*this->brain = *cpy.brain;
+	if (this->brain)
+	{
+		delete this->brain;
+		this->brain = 0;
+	}
+	if (cpy.brain)
+	{
+		this->brain = new Brain(*cpy.brain);
+	}
 }
 
 Dog &Dog::operator=(const Dog& src)
@@ -32,7 +40,15 @@ Dog &Dog::operator=(const Dog& src)
 	if (this != &src)
 	{
 		this->type = src.type;
-		*this->brain = *src.brain;
+		if (this->brain)
+		{
+			delete this->brain;
+			this->brain = 0;
+		}
+		if (src.brain)
+		{
+			this->brain = new Brain(*src.brain);
+		}
 	}
 	return *this;
 }

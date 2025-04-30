@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 11:08:44 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/29 14:41:46 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:47:19 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class AMateria
 		
 		std::string const &getType() const;
 		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target) = 0;
+		virtual void use(ICharacter& target);
 };
 
 #endif
