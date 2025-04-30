@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 18:08:13 by kilian            #+#    #+#             */
-/*   Updated: 2025/04/04 11:33:23 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:55:29 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 		std::string str(av[i]);
 		for (int j = 0; str[j]; j++)
 		{
-			std::cout << std::toupper(str[j]);
+			std::cout << (char)std::toupper(str[j]);
 		}
 		std::cout << " ";
 		i++;
