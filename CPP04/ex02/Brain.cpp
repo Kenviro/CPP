@@ -6,7 +6,7 @@
 /*   By: ktintim- <ktintim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 09:21:17 by ktintim-          #+#    #+#             */
-/*   Updated: 2025/04/24 11:28:24 by ktintim-         ###   ########.fr       */
+/*   Updated: 2025/05/01 10:37:40 by ktintim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ Brain::Brain(const Brain& cpy)
 
 	while (index != cpy.nbIdeas)
 	{
-		this->ideas[index] = cpy.ideas[index];
+		ideas[index] = cpy.ideas[index];
 		index++;
 	}
+	nbIdeas = cpy.nbIdeas;
 }
 
 Brain &Brain::operator=(const Brain& src)
@@ -41,9 +42,10 @@ Brain &Brain::operator=(const Brain& src)
 
 		while (index != src.nbIdeas)
 		{
-			this->ideas[index] = src.ideas[index];
+			ideas[index] = src.ideas[index];
 			index++;
 		}
+		nbIdeas = src.nbIdeas;
 	}
 	return *this;
 }
