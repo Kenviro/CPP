@@ -6,15 +6,16 @@
 /*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 15:54:07 by kilian            #+#    #+#             */
-/*   Updated: 2025/07/03 19:11:02 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/21 12:21:42 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <string>
-# include <iostream>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 
@@ -31,10 +32,10 @@ class Bureaucrat {
 		Bureaucrat& operator=(const Bureaucrat& src);
 		~Bureaucrat();
 
-
 		std::string	getName() const;
 		int			getGrade() const;
 
+		void		signForm(Form& form);
 		void		gradePlusPlus();
 		void		gradeMinusMinus();
 		void		gradePlusSmth(int x);

@@ -6,7 +6,7 @@
 /*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 18:15:14 by kilian            #+#    #+#             */
-/*   Updated: 2025/07/03 19:24:35 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/22 07:11:15 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ int main()
 	{
 		Bureaucrat b(150, "Pepe");
 		std::cout << b << std::endl;
-		b.gradePlusSmth(2);
+		Form f("Form_a", 145, 130);
+		std::cout << f << std::endl;
+		b.signForm(f);
+		b.gradePlusSmth(5);
 		std::cout << b << std::endl;
-		b.gradeMinusMinus();
-		std::cout << b << std::endl;
-		b.gradeMinusSmth(2);
+		b.signForm(f);
 	}
 	catch (std::exception &e)
 	{
@@ -34,14 +35,10 @@ int main()
 	try
 	{
 		Bureaucrat b(1, "Jhonny");
+		Form f("form_b", 5, 1);
 		std::cout << b << std::endl;
-		b.gradeMinusSmth(5);
-		std::cout << b << std::endl;
-		b.gradePlusPlus();
-		std::cout << b << std::endl;
-		b.gradePlusSmth(4);
-		std::cout << b << std::endl;
-		b.gradePlusPlus();
+		std::cout << f << std::endl;
+		b.signForm(f);
 	}
 	catch (std::exception &e)
 	{
@@ -51,6 +48,7 @@ int main()
 	std::cout << std::endl;
 	try
 	{
+		Form f("form_b", 0, 151);
 		Bureaucrat b(160, "Patrick");
 		std::cout << b << std::endl;
 	}
@@ -62,6 +60,7 @@ int main()
 	std::cout << std::endl;
 	try
 	{
+		Form f("form_b", 151, 1);
 		Bureaucrat b(0, "Patrick2");
 		std::cout << b << std::endl;
 	}

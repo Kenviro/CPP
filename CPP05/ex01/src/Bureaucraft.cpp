@@ -6,7 +6,7 @@
 /*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 15:55:30 by kilian            #+#    #+#             */
-/*   Updated: 2025/07/03 19:23:35 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/21 07:08:01 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ int	Bureaucrat::getGrade() const
 }
 
 /*********************************Member function*******************************/
+
+void	Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << getName() << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << getName() << " cannot signe " << form.getName() << \
+					" because " << e.what() << std::endl;
+	}
+}
 
 void	Bureaucrat::gradePlusPlus()
 {
