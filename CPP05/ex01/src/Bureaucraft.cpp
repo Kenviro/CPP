@@ -6,7 +6,7 @@
 /*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 15:55:30 by kilian            #+#    #+#             */
-/*   Updated: 2025/07/21 07:08:01 by kilian           ###   ########.fr       */
+/*   Updated: 2025/07/22 07:13:12 by kilian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	Bureaucrat::signForm(Form& form)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << getName() << " cannot signe " << form.getName() << \
+		std::cout << getName() << " couldn't signe " << form.getName() << \
 					" because " << e.what() << std::endl;
 	}
 }
