@@ -6,13 +6,13 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 22:43:35 by ktintim           #+#    #+#             */
-/*   Updated: 2025/08/08 23:04:04 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/08/27 17:44:09 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/easyfind.hpp"
 #include <vector>
-#include <array>
+#include <deque>
 
 int	main()
 {
@@ -28,13 +28,16 @@ int	main()
 	try 
 	{
 		easyfind(a, 18);
+		easyfind(a, 5);
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
 
-	std::array<int, 10> b;
+	std::cout << "=================================" << std::endl;
+
+	std::deque<int> b(10);
 	for (int i = 0; i < 10; i++)
 	{
 		b[i] = i;
