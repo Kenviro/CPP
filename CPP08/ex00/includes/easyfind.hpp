@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 21:03:41 by ktintim           #+#    #+#             */
-/*   Updated: 2025/08/08 23:05:32 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/01 14:00:25 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <exception>
+# include <algorithm>
 
 class OccurenceNotFoundException : public std::exception {
 	public:
@@ -24,14 +25,9 @@ class OccurenceNotFoundException : public std::exception {
 template <typename T>
 void	easyfind(const T& a, int nb)
 {
-	int size = a.size();
-	for (int i = 0; i < size; i++)
+	if (std::find(a.begin(), a.end(), nb) != a.end())
 	{
-		if (a[i] == nb)
-		{
-			std::cout << nb << " found at emplacement " << i << std::endl;
-			return ;
-		}
+		std::cout << nb << " found in containers" << std::endl;
 	}
 	throw OccurenceNotFoundException();
 }
