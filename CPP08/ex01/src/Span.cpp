@@ -6,25 +6,25 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:32:43 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/02 15:36:54 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/02 22:05:00 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Span.hpp"
-#include <iostream>
 #include <algorithm>
+#include <limits>
 
-Span::Span() : _n(0)
+Span::Span() : _size(0)
 {
 	std::cout << "get out from here !!!1!!" << std::endl;
 }
 
-Span::Span(unsigned int n) : _n(n)
+Span::Span(unsigned int n) : _size(n)
 {
 
 }
 
-Span::Span(const Span& cpy) : _n(cpy._n)
+Span::Span(const Span& cpy) : _size(cpy._size)
 {
 	this->_array = cpy._array;
 }
@@ -47,7 +47,10 @@ void Span::addNumber(int n)
 {
 	try
 	{
-		_array.push_back(n);
+		if (_array.size() < this->_size)
+			_array.push_back(n);
+		else
+			throw ExceedMaxSizeException();
 	}
 	catch(const std::exception& e)
 	{
@@ -74,7 +77,34 @@ void Span::addRangeNumber(int first, int last)
 
 int Span::shortestSpan()
 {
-	return 0;
+	int ret = __INT_MAX__;
+	std::vector<int> cpy;
+
+	cpy = _array;
+	std::sort(cpy.begin(), cpy.end());
+	
+	for (std::vector<int>::iterator it = cpy.begin(); it != cpy.end(); it++)
+	{
+		std::vector<int>::iterator start = it + 1;
+		if (start == cpy.end())
+			break ;
+		if (*start - *it < ret)
+			ret = *start - *it;
+	}
+
+	return ret;
+}
+
+void debugLongSpan(std::vector<int> v)
+{
+	std::cout << "==========test longest span==========" << std::endl;
+	for (int i = 0; i < (int)v.size(); i++)
+	{
+		std::cout << "[" << v[i] << "]";
+	}
+	std::cout << std::endl;
+	std::cout << "cpy[size - 1] : " << v[v.size() - 1] << " | cpy[0] : " << v[0] << std::endl;
+	std::cout << "====================" << std::endl;
 }
 
 int Span::longestSpan()
@@ -84,5 +114,33 @@ int Span::longestSpan()
 	cpy = _array;
 	std::sort(cpy.begin(), cpy.end());
 
-	return (cpy[0] - cpy[cpy.size()]);
+	// debugLongSpan(cpy);
+	
+	return (cpy[cpy.size() - 1] - cpy[0]);
+}
+
+int	Span::getIndex(int i) const
+{
+	return _array[i];
+}
+
+int	Span::getMaxSize() const
+{
+	return _size;
+}
+
+const char* Span::ExceedMaxSizeException::what() const throw()
+{
+	return "Max size for span no more add >:(";
+}
+
+std::ostream &operator<<(std::ostream& stream, const Span& s)
+{
+	stream << "size = " << s.getMaxSize() << " ";
+
+	for (int i = 0; i < s.getMaxSize(); i++)
+	{
+		stream << "[" << s.getIndex(i) << "]";
+	}
+	return stream;
 }
