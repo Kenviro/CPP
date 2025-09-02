@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:32:43 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/02 22:05:00 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/02 22:20:33 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,26 +95,12 @@ int Span::shortestSpan()
 	return ret;
 }
 
-void debugLongSpan(std::vector<int> v)
-{
-	std::cout << "==========test longest span==========" << std::endl;
-	for (int i = 0; i < (int)v.size(); i++)
-	{
-		std::cout << "[" << v[i] << "]";
-	}
-	std::cout << std::endl;
-	std::cout << "cpy[size - 1] : " << v[v.size() - 1] << " | cpy[0] : " << v[0] << std::endl;
-	std::cout << "====================" << std::endl;
-}
-
 int Span::longestSpan()
 {
 	std::vector<int> cpy;
 
 	cpy = _array;
 	std::sort(cpy.begin(), cpy.end());
-
-	// debugLongSpan(cpy);
 	
 	return (cpy[cpy.size() - 1] - cpy[0]);
 }
