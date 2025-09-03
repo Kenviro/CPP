@@ -6,14 +6,14 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:07:45 by ktintim           #+#    #+#             */
-/*   Updated: 2025/08/08 18:31:52 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/03 14:09:23 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
-template <typename T> 
+template <typename T>
 class Array
 {
 	private :
