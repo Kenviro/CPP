@@ -1,0 +1,10 @@
+ex00 :
+	-dois prendre une date (string) et un nombre (int) -> std::map
+
+ex01 :
+	-reverse polish notation = empiler les elements sur une stack -> quand une operation
+	arrive sur la stack faire cette operation sur les deux premier elements
+	->std::stack
+
+ex02 :
+	-aucune idee pour le moment (rien capter) (surment std::vector et std::list ?)

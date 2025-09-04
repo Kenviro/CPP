@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 19:47:59 by kilian            #+#    #+#             */
-/*   Updated: 2025/07/22 07:01:51 by kilian           ###   ########.fr       */
+/*   Updated: 2025/09/04 11:05:22 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Form::Form(std::string name, int gradeToSigne, int gradeToExecute) : _name(name)
 Form::Form(const Form& cpy) : _name(cpy._name), _gradeToSigne(cpy._gradeToSigne), 
 							_gradeToExecute(cpy._gradeToExecute), _signed(false)
 {
-
+	
 }
 
 Form &Form::operator=(const Form& src)
