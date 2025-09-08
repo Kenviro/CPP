@@ -1,6 +1,13 @@
 ex00 :
 	-dois prendre une date (string) et un nombre (int) -> std::map
 
+{
+	-verifier que le fichier.txt est valide
+	-ouvrire ma DB
+	-parcourir ma DB (opti: annee->mois->jour ?)
+	-quand bonne date trouver extraire la valeur et la mult a celle du txt
+}
+
 ex01 :
 	-reverse polish notation = empiler les elements sur une stack -> quand une operation
 	arrive sur la stack faire cette operation sur les deux premier elements
