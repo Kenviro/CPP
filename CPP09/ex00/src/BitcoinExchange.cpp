@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 11:03:40 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/08 14:10:05 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/09 14:15:13 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,24 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-	
+	std::ifstream dbFile;
+	std::string line;
+
+	dbFile.open("../includes/data.csv");
+	while (std::getline(dbFile, line))
+	{
+		if (isdigit(line[0]))
+			continue ;
+		int sep = line.find_first_of(',', line.size());
+
+		char *tmp;
+		int value;
+		line.copy(tmp, line.size() - sep, sep + 1);
+		value = atoi(tmp);
+	}
 }
 
-BitcoinExchange::BitcoinExchange(char *input) : _inputPath(input), _line(0)
-{
-	
-}
-
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& cpy) :	_inputPath(cpy._inputPath), 
-																_line(cpy._line)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& cpy) : _db(cpy._db)
 {
 	
 }
@@ -40,11 +48,4 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange& src)
 BitcoinExchange::~BitcoinExchange()
 {
 	
-}
-
-int BitcoinExchange::testPath()
-{
-	std::ifstream myFile(this->_inputPath);
-
-	return myFile.is_open();
 }
