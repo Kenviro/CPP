@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:37:35 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/08 15:35:40 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/09 11:09:01 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void RPN::add()
 	_polish.pop();
 	int second = _polish.top();
 	_polish.pop();
-	std::cout << "first : " << first << " second : " << second << std::endl;
 	_polish.push(second + first);
 }
 
@@ -65,7 +64,6 @@ void RPN::substract()
 	_polish.pop();
 	int second = _polish.top();
 	_polish.pop();
-	std::cout << "first : " << first << " second : " << second << std::endl;
 	_polish.push(second - first);
 }
 
@@ -78,7 +76,6 @@ void RPN::mult()
 	_polish.pop();
 	int second = _polish.top();
 	_polish.pop();
-	std::cout << "first : " << first << " second : " << second << std::endl;
 	_polish.push(second * first);
 }
 
@@ -91,7 +88,6 @@ void RPN::divide()
 	_polish.pop();
 	int second = _polish.top();
 	_polish.pop();
-	std::cout << "first : " << first << " second : " << second << std::endl;
 	_polish.push(second / first);
 }
 
@@ -101,10 +97,13 @@ void RPN::operation(char c)
 	{
 		case '+' :
 			add();
+			break ;
 		case '-' :
 			substract();
+			break ;
 		case '*' :
 			mult();
+			break ;
 		case '/' :
 			divide();
 	}
@@ -120,7 +119,6 @@ int RPN::calcul(std::string input)
 			_polish.push(input[i] - 48);
 		else
 			operation(input[i]);
-		std::cout << _polish.top() << std::endl;
 	}
 	
 	return _polish.top();
