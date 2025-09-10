@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 11:03:40 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/09 14:15:13 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/10 16:20:54 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-	std::ifstream dbFile;
+	std::ifstream dbFile("includes/data.csv");
 	std::string line;
 
-	dbFile.open("../includes/data.csv");
 	while (std::getline(dbFile, line))
 	{
-		if (isdigit(line[0]))
+		if (!isdigit(line[0]))
 			continue ;
-		int sep = line.find_first_of(',', line.size());
-
-		char *tmp;
-		int value;
+		int sep = line.find_first_of(',', 0);
+		if (sep == (int)std::string::npos)
+			continue ;
+		char *tmp = new char[sep];
+		double value;
 		line.copy(tmp, line.size() - sep, sep + 1);
-		value = atoi(tmp);
+		tmp[sep] = '\0';
+		value = std::atof(tmp);
+		line.erase(sep, line.size() - sep + 1);
+		
+		_db.insert(std::make_pair(line, value));
+		delete[] tmp;
 	}
 }
 
