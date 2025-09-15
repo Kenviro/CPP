@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 11:02:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/11 11:05:38 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/15 14:49:34 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 # include <fstream>
 # include <utility>
 # include <cstdlib>
+# include <sstream>
 
 class BitcoinExchange {
 
 	private:
 
 		std::map<std::string, float> _db;
+		int checkInput(std::string line);
 		
 	public:
 		
@@ -33,7 +35,7 @@ class BitcoinExchange {
 		BitcoinExchange& operator=(const BitcoinExchange& src);
 		~BitcoinExchange();
 		
-		void exchange(std::string line);
+		void exchange(std::string input);
 };
 
 #endif

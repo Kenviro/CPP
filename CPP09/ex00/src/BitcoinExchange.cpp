@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 11:03:40 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/15 11:04:11 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/15 14:53:23 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,22 @@ BitcoinExchange::~BitcoinExchange()
 	
 }
 
-void BitcoinExchange::exchange(std::string line)
+int BitcoinExchange::checkInput(std::string input)
 {
+	std::stringstream ss(input);
 	
+	std::string date;
+	ss >> date;
+	
+}
+
+void BitcoinExchange::exchange(std::string input)
+{
+	std::ifstream file(input);
+	std::string line;
+
+	while (std::getline(file, line))
+	{
+		
+	}
 }
