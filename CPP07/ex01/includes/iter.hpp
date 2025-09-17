@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kilian <kilian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 20:57:12 by kilian            #+#    #+#             */
-/*   Updated: 2025/08/03 23:03:10 by kilian           ###   ########.fr       */
+/*   Updated: 2025/09/17 10:56:00 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ void incr(T &p)
 }
 
 template <typename T>
+void print(const T &p)
+{
+	std::cout << p << std::endl;
+}
+
+template <typename T>
 void print(T &p)
 {
 	std::cout << p << std::endl;
@@ -27,6 +33,15 @@ void print(T &p)
 
 template <typename T>
 void iter(T* array, int length, void (*f)(T &n))
+{
+	for (int i = 0; i < length; i++)
+	{
+		f(array[i]);
+	}
+}
+
+template <typename T>
+void iter(const T* array, int length, void (*f)(const T &n))
 {
 	for (int i = 0; i < length; i++)
 	{
