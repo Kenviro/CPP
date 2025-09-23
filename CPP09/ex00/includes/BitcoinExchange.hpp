@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 11:02:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/15 14:49:34 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/23 15:42:13 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,34 @@
 # include <string>
 # include <iostream>
 # include <fstream>
-# include <utility>
-# include <cstdlib>
+# include <ctime>
 # include <sstream>
 
-class BitcoinExchange {
+class Date {
 
 	private:
 
-		std::map<std::string, float> _db;
-		int checkInput(std::string line);
-		
+		std::tm *_date;
+		Date();
+
 	public:
+
+		Date(int year, int month, int day);
+		Date(const Date& cpy);
+		Date& operator=(const Date& src);
+		~Date();
+
+		time_t getTime() const;
 		
-		BitcoinExchange();
-		BitcoinExchange(const BitcoinExchange& cpy);
-		BitcoinExchange& operator=(const BitcoinExchange& src);
-		~BitcoinExchange();
-		
-		void exchange(std::string input);
+		bool operator<(const Date &rhs) const;
+		bool operator>(const Date &rhs) const;
+		bool operator<=(const Date &rhs) const;
+		bool operator>=(const Date &rhs) const;
+		bool operator==(const Date &rhs) const;
+		bool operator!=(const Date &rhs) const;
 };
+
+std::map<Date, double> *generateData(std::ifstream& db);
+void bitcoinExchange(std::map<Date, double> *db, std::ifstream& input);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 13:52:15 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/15 11:10:22 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/23 15:32:15 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 int main(int ac, char** av)
 {
-	BitcoinExchange btc;
+	(void)ac;
 	std::ifstream input(av[1]);
-
-	if (ac != 2 || input.is_open() == false)
+	if (!input)
 	{
-		std::cout << "Error: could not open file" << std::endl;
+		std::cerr << "Error: could not open file" << std::endl;
+		return 1;
+	}
+	std::ifstream db("includes/data.csv");
+	if (!db)
+	{
+		std::cerr << "Error: couldnt open data.csv" << std::endl;
 		return 1;
 	}
 	
+	std::map<Date, double> *dbMap = generateData(db);
+	bitcoinExchange(dbMap, input);
+
 	return 0;
 }
