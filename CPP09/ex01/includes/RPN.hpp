@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:28:05 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/08 15:18:07 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/24 11:16:58 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stack>
 # include <string>
 # include <iostream>
-
+# include <sstream>
 class RPN {
 
 	private:

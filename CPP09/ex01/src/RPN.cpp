@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:37:35 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/09 11:09:01 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/09/24 11:22:51 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,20 @@ RPN::~RPN()
 
 int RPN::checkInput(std::string input)
 {
-	if (input.find_first_not_of("0123456789+-*/", input.size()) == std::string::npos)
-		return 0;
-	return 1;
+	std::stringstream ss(input);
+	std::string str;
+	while (ss >> str)
+	{
+		if (str.length() != 1)
+			return 1;
+		if (isdigit(str[0]) == 0 && 
+						(str[0] != '*' && 
+						str[0] != '/' && 
+						str[0] != '+' && 
+						str[0] != '-'))
+			return 1;
+	}
+	return 0;
 }
 
 void RPN::add()
