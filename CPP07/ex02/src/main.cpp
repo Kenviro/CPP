@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:07:34 by ktintim           #+#    #+#             */
-/*   Updated: 2025/08/08 18:44:46 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/02 11:06:39 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int main()
 {
+	srand(time(0));
 	Array<float> a;
 	std::cout << "size of a = " << a.size() << std::endl;
 	
@@ -38,7 +39,7 @@ int main()
 		b2[i] = rand() % 150;
 		std::cout << "after rand b2[" << i << "] = " << b2[i] << std::endl;
 	}
-	
+	std::cout << std::endl;
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << "b[" << i << "] = " << b[i] << std::endl;
