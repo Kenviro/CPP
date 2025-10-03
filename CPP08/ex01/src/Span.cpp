@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:32:43 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/02 22:20:33 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/03 12:02:04 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void Span::addRangeNumber(int first, int last)
 	{
 		while (first <= last)
 		{
-			_array.push_back(first);
+			if (_array.size() < this->_size)
+				_array.push_back(first);
+			else
+				throw ExceedMaxSizeException();
 			first++;
 		}
 	}
