@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:32:43 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/03 12:02:04 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/06 14:23:47 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ void Span::addRangeNumber(int first, int last)
 
 int Span::shortestSpan()
 {
+	if (_size < 2)
+		return 0;
+	
 	int ret = __INT_MAX__;
 	std::vector<int> cpy;
 
@@ -100,6 +103,9 @@ int Span::shortestSpan()
 
 int Span::longestSpan()
 {
+	if (_size < 2)
+		return 0;
+
 	std::vector<int> cpy;
 
 	cpy = _array;
