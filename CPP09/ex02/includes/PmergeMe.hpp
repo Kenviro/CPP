@@ -6,13 +6,14 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:16:02 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/08 16:06:34 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/17 15:28:51 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
+# include <algorithm>
 # include <time.h>
 # include <vector>
 # include <exception>
@@ -29,6 +30,7 @@ class PmergeVector {
 		clock_t _start;
 		PmergeVector();
 		void printVec();
+		void exchangePair(std::vector<int>::iterator first, std::vector<int>::iterator sec);
 
 	public:
 

@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/09 10:41:12 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/17 15:38:07 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,16 @@ void PmergeVector::printVec()
 		start++;
 	}
 	std::cout << std::endl;
+}
+
+void PmergeVector::exchangePair(std::vector<int>::iterator first, std::vector<int>::iterator sec)
+{
+	if (*first >= *sec)
+		return ;
+	
+	std::vector<int>::iterator newPos = sec + _order;
+
+	std::rotate(first, sec - 1, newPos);
 }
 
 void PmergeVector::sort()
