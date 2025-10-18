@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/17 15:38:07 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/18 19:25:47 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ PmergeVector::PmergeVector(char *input) : _order(1)
 			throw std::invalid_argument("Error : negative number.");
 		_data.push_back(nb);
 	}
-	printVec();
+	// printVec();
 }
 
 PmergeVector::PmergeVector(const PmergeVector& cpy)
@@ -71,12 +71,13 @@ void PmergeVector::printVec()
 
 void PmergeVector::exchangePair(std::vector<int>::iterator first, std::vector<int>::iterator sec)
 {
-	if (*first >= *sec)
+	if (*first <= *sec)
 		return ;
 	
-	std::vector<int>::iterator newPos = sec + _order;
 
-	std::rotate(first, sec - 1, newPos);
+	std::vector<int>::iterator newPos = sec + 1;
+
+	std::rotate(first - _order + 1, sec - _order + 1, newPos);
 }
 
 void PmergeVector::sort()
