@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:16:02 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/20 15:28:10 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/20 15:36:01 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class PmergeVector {
 		void printVec();
 		void exchangePair(std::vector<int>::iterator first, std::vector<int>::iterator sec);
 		void merge();
+		void insertion();
 
 	public:
 

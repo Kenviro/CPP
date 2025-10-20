@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/20 15:34:25 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/20 15:44:56 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,23 @@ void PmergeVector::merge()
 	merge();
 }
 
+void PmergeVector::insertion()
+{
+	std::vector<int>::iterator first = _data.begin() + (_order - 1);
+	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+
+	//do thing
+
+	if (_order == 1)
+		return ;
+
+	_order /= 2;
+	insertion();
+}
+
 void PmergeVector::sort()
 {
 	merge();
-
+	insertion();
 	printVec();
 }
