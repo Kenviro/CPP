@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/20 15:44:56 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/20 18:53:13 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ PmergeVector::PmergeVector(char *input) : _order(1)
 	_start = clock();
 	
 	std::stringstream s(input);
-	int nb;
+	long int nb;
 	while (s >> nb)
 	{
 		if (nb < 0)
 			throw std::invalid_argument("Error : negative number.");
+		if (nb > __INT_MAX__)
+			throw std::invalid_argument("Error : number above INT_MAX.");
 		_data.push_back(nb);
 	}
 	// printVec();
@@ -100,13 +102,54 @@ void PmergeVector::merge()
 	merge();
 }
 
+std::vector<int> PmergeVector::createPend()
+{
+	std::vector<int> pend;
+
+	std::vector<int>::iterator first = _data.begin() + (_order - 1);
+	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+
+	while (sec <= _data.end())
+	{
+		first += _order * 2;
+		sec += _order * 2;
+
+		pend.insert(pend.end() - 1, sec - (_order - 1), sec);
+	}
+
+	return pend;
+}
+
+std::vector<int> PmergeVector::createMain()
+{
+	std::vector<int> main;
+
+	std::vector<int>::iterator first = _data.begin() + (_order - 1);
+	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+
+	while (sec <= _data.end())
+	{
+		first += _order * 2;
+		sec += _order * 2;
+
+		main.insert(main.end() - 1, first - (_order - 1), first);
+	}
+
+	return main;
+}
+
 void PmergeVector::insertion()
 {
 	std::vector<int>::iterator first = _data.begin() + (_order - 1);
 	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
 
-	//do thing
+	std::vector<int> main = createMain();
+	std::vector<int> pend = createPend();
+	
+	// insert pend in main
 
+
+	_data = main;
 	if (_order == 1)
 		return ;
 
