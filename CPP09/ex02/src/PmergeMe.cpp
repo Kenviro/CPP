@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/18 19:25:47 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/20 15:34:25 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,29 @@ void PmergeVector::exchangePair(std::vector<int>::iterator first, std::vector<in
 	std::rotate(first - _order + 1, sec - _order + 1, newPos);
 }
 
+void PmergeVector::merge()
+{
+	if ((_order * 2) > _data.size())
+		return ;
+		
+	std::vector<int>::iterator first = _data.begin() + (_order - 1);
+	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+
+	while (sec <= _data.end())
+	{
+		exchangePair(first, sec);
+		
+		first += _order * 2;
+		sec += _order * 2;
+	}
+
+	_order *= 2;
+	merge();
+}
+
 void PmergeVector::sort()
 {
-	
+	merge();
+
+	printVec();
 }
