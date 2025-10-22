@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:11:06 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/03 17:18:17 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/22 11:54:53 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <cstddef>
 
 template<typename T>
-class MutantStack : public std::stack<T> {
+class MutantStack {
 
 	private:
 
