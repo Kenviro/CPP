@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/20 18:53:13 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/23 17:56:05 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,52 +102,84 @@ void PmergeVector::merge()
 	merge();
 }
 
-std::vector<int> PmergeVector::createPend()
-{
-	std::vector<int> pend;
+// std::vector<int> PmergeVector::createPend()
+// {
+// 	std::vector<int> pend;
 
-	std::vector<int>::iterator first = _data.begin() + (_order - 1);
-	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+// 	std::vector<int>::iterator first = _data.begin() + (_order - 1);
+// 	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
 
-	while (sec <= _data.end())
-	{
-		first += _order * 2;
-		sec += _order * 2;
+// 	while (sec <= _data.end())
+// 	{
+// 		first += _order * 2;
+// 		sec += _order * 2;
 
-		pend.insert(pend.end() - 1, sec - (_order - 1), sec);
-	}
+// 		pend.insert(pend.end() - 1, sec - (_order - 1), sec);
+// 	}
 
-	return pend;
-}
+// 	return pend;
+// }
 
-std::vector<int> PmergeVector::createMain()
-{
-	std::vector<int> main;
+// std::vector<int> PmergeVector::createMain()
+// {
+// 	std::vector<int> main;
 
-	std::vector<int>::iterator first = _data.begin() + (_order - 1);
-	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+// 	std::vector<int>::iterator first = _data.begin() + (_order - 1);
+// 	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
 
-	while (sec <= _data.end())
-	{
-		first += _order * 2;
-		sec += _order * 2;
+// 	while (sec <= _data.end())
+// 	{
+// 		first += _order * 2;
+// 		sec += _order * 2;
 
-		main.insert(main.end() - 1, first - (_order - 1), first);
-	}
+// 		main.insert(main.end() - 1, first - (_order - 1), first);
+// 	}
 
-	return main;
-}
+// 	return main;
+// }
 
 void PmergeVector::insertion()
 {
-	std::vector<int>::iterator first = _data.begin() + (_order - 1);
-	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+	// std::vector<int>::iterator first = _data.begin() + (_order - 1);
+	// std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
 
-	std::vector<int> main = createMain();
-	std::vector<int> pend = createPend();
+	std::vector<int> main;
+	std::vector<int> pend;
+	std::vector<int> trash;
+	
+	for (size_t i = 0; i < _order; i++)
+		main.push_back(_data[i]);
+	for (size_t i = _order; i < _order * 2; i++)
+		main.push_back(_data[i]);
+
+	size_t nbPair = _data.size() / _order;
+	size_t idxPair = 2;
+	size_t idxTrash = 0;
+
+	while (idxPair < nbPair)
+	{
+		if ((idxPair + 1) % 2 == 0)
+		{
+			for (size_t i = idxPair * _order; i < (idxPair + 1) * _order; i++)
+				main.push_back(_data[i]);
+		}
+		else
+		{
+			for (size_t i = idxPair * _order; i < (idxPair + 1) * _order; i++)
+				pend.push_back(_data[i]);
+		}
+		idxPair++;
+
+		if (nbPair == idxPair)
+		{
+			idxTrash = idxPair * _order;
+			for (; idxTrash < _data.size(); idxTrash++)
+				trash.push_back(_data[idxTrash]);
+		}
+	}
+	_data.clear();
 	
 	// insert pend in main
-
 
 	_data = main;
 	if (_order == 1)
