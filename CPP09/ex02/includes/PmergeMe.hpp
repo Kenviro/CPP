@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:16:02 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/23 17:25:43 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/24 11:12:46 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,20 @@
 # include <sstream>
 # include <iostream>
 
+# define vit std::vector<int>::iterator
+# define vi std::vector<int>
+
 class PmergeVector {
 
 	private:
 
-		std::vector<int> _data;
+		vi _data;
 		size_t	_order;
 		clock_t _start;
 		PmergeVector();
 		void printVec();
-		void exchangePair(std::vector<int>::iterator first, std::vector<int>::iterator sec);
+		void exchangePair(vit first, vit sec);
+		void binarySearch(vi &main, vi &pend, vit sbegin, vit send);
 		void merge();
 		void insertion();
 

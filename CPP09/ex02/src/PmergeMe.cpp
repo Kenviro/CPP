@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/23 17:56:05 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/24 15:43:37 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ PmergeVector::~PmergeVector()
 
 void PmergeVector::printVec()
 {
-	std::vector<int>::iterator start = _data.begin();
-	std::vector<int>::iterator end = _data.end();
+	vit start = _data.begin();
+	vit end = _data.end();
 	while (start != end)
 	{
 		std::cout << *start << " ";
@@ -71,13 +71,11 @@ void PmergeVector::printVec()
 	std::cout << std::endl;
 }
 
-void PmergeVector::exchangePair(std::vector<int>::iterator first, std::vector<int>::iterator sec)
+void PmergeVector::exchangePair(vit first, vit sec)
 {
 	if (*first <= *sec)
 		return ;
-	
-
-	std::vector<int>::iterator newPos = sec + 1;
+	vit newPos = sec + 1;
 
 	std::rotate(first - _order + 1, sec - _order + 1, newPos);
 }
@@ -86,9 +84,9 @@ void PmergeVector::merge()
 {
 	if ((_order * 2) > _data.size())
 		return ;
-		
-	std::vector<int>::iterator first = _data.begin() + (_order - 1);
-	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+	
+	vit first = _data.begin() + (_order - 1);
+	vit sec = _data.begin() + (_order * 2 - 1);
 
 	while (sec <= _data.end())
 	{
@@ -102,12 +100,12 @@ void PmergeVector::merge()
 	merge();
 }
 
-// std::vector<int> PmergeVector::createPend()
+// vi PmergeVector::createPend()
 // {
-// 	std::vector<int> pend;
+// 	vi pend;
 
-// 	std::vector<int>::iterator first = _data.begin() + (_order - 1);
-// 	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+// 	vit first = _data.begin() + (_order - 1);
+// 	vit sec = _data.begin() + (_order * 2 - 1);
 
 // 	while (sec <= _data.end())
 // 	{
@@ -120,12 +118,12 @@ void PmergeVector::merge()
 // 	return pend;
 // }
 
-// std::vector<int> PmergeVector::createMain()
+// vi PmergeVector::createMain()
 // {
-// 	std::vector<int> main;
+// 	vi main;
 
-// 	std::vector<int>::iterator first = _data.begin() + (_order - 1);
-// 	std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+// 	vit first = _data.begin() + (_order - 1);
+// 	vit sec = _data.begin() + (_order * 2 - 1);
 
 // 	while (sec <= _data.end())
 // 	{
@@ -138,14 +136,43 @@ void PmergeVector::merge()
 // 	return main;
 // }
 
+void PmergeVector::binarySearch(vi &main, vi &pend, vit sbegin, vit send)
+{
+	vit start = main.begin();
+	vit end = main.end() - 1;
+	vit middle = start + std::distance(start, end);
+	int range = std::distance(start, end) / _order;
+
+	while (true)
+	{
+		if (range <= 2)
+		{
+			if (range <= 1)
+			{
+				// insert 1 after middle or end	
+			}
+			else
+			{
+				// insert in right or left of middle
+			}
+		}
+		if (*send <= *middle)
+		{
+			// recalcul mid and make end == mid	
+		}
+
+		// setup to redo the iteration in a new range
+	}
+}
+
 void PmergeVector::insertion()
 {
-	// std::vector<int>::iterator first = _data.begin() + (_order - 1);
-	// std::vector<int>::iterator sec = _data.begin() + (_order * 2 - 1);
+	// vit first = _data.begin() + (_order - 1);
+	// vit sec = _data.begin() + (_order * 2 - 1);
 
-	std::vector<int> main;
-	std::vector<int> pend;
-	std::vector<int> trash;
+	vi main;
+	vi pend;
+	vi trash;
 	
 	for (size_t i = 0; i < _order; i++)
 		main.push_back(_data[i]);
