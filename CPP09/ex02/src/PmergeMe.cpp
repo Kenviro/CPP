@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/27 16:05:34 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/27 17:00:15 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,11 @@ void PmergeVector::exchangePair(vit first, vit sec)
 void PmergeVector::merge()
 {
 	if ((_order * 2) > _data.size())
+	{
+		insertion();
 		return ;
-	
+	}
+		
 	vit first = _data.begin() + (_order - 1);
 	vit sec = _data.begin() + (_order * 2 - 1);
 
@@ -118,30 +121,24 @@ void PmergeVector::binarySearch(vi &main, vi &pend, vit sbegin, vit send, vit st
 		{
 			if (range <= 1)
 			{
-				// insert 1 after middle or end
-			}
-			else
-			{
-				// insert in right or left of middle
-			}
-		}
-		else if (range == 2)
-		{
-			if (*send <= *middle)
-			{
-				// insert at begin
-			}
-			else
-			{
 				if (*send <= *end)
-				{
-					// insert at mid+1
-				}
+					main.insert(start, sbegin, send);
+				else
+					main.insert(end + 1, sbegin, send + 1);
+			}
+			else if (range == 2)
+			{
+				if (*send <= *middle)
+					main.insert(start, sbegin, send);
 				else
 				{
-					// insert at end+1
+					if (*send <= *end)
+						main.insert(middle + 1, sbegin, send);
+					else
+						main.insert(end + 1, sbegin, send + 1);
 				}
 			}
+			break ;
 		}
 		
 		if (*send <= *middle)
@@ -161,6 +158,38 @@ void PmergeVector::binarySearch(vi &main, vi &pend, vit sbegin, vit send, vit st
 		else
 			middle = end - ((range / 2) * _order);
 	}
+}
+
+void PmergeVector::standardBinary(vi &main, vi& pend)
+{
+	vit start = pend.end() - _order;
+	vit end = pend.end() - 1;
+
+	while (!pend.empty())
+	{
+		binarySearch(main, pend, start, end, main.begin(), main.end() - 1);
+		if (start != pend.begin())
+		{
+			start -= _order;
+			end -= _order;
+		}
+		for (size_t i = _order; i > 0; i--)
+			pend.pop_back();
+	}
+}
+
+void PmergeVector::binarySort(vi &main, vi& pend, vi &trash)
+{
+	
+	// use jacobsthal
+	
+	standardBinary(main, pend);
+	
+
+	for (vit ite = trash.begin(); ite != trash.end(); ite++)
+		main.push_back(*ite);
+	trash.clear();
+
 }
 
 void PmergeVector::insertion()
@@ -201,7 +230,7 @@ void PmergeVector::insertion()
 	}
 	_data.clear();
 	
-	// insert pend in main
+	binarySort(main, pend, trash);
 
 	_data = main;
 	if (_order == 1)
@@ -214,6 +243,5 @@ void PmergeVector::insertion()
 void PmergeVector::sort()
 {
 	merge();
-	insertion();
 	printVec();
 }
