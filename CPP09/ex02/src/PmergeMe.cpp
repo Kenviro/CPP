@@ -6,11 +6,30 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/27 18:11:26 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/27 18:49:31 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
+
+std::vector<long> jacobsthal(size_t size)
+{
+	std::vector<long> j;
+	size_t range = 0;
+
+	j.push_back(0);
+	j.push_back(1);
+	while (true)
+	{
+		size_t next = j[j.size() - 1] + 2 * j[j.size() - 2];
+		if (range >= size)
+			break ;
+		range += (size_t)(j[j.size() - 1] - j[j.size() - 2]); 
+		j.push_back(next);
+	}
+	return (j);
+}
+
 
 PmergeVector::PmergeVector() : _order(0)
 {
@@ -191,13 +210,44 @@ void PmergeVector::standardBinary(vi &main, vi& pend)
 	}
 }
 
+void PmergeVector::jacobsthalBinary(vi &main, vi &pend, std::vector<long>::iterator itj)
+{
+	while (!pend.empty())
+	{
+		size_t nbrInsert = *itj - (*(itj - 1));
+		if (nbrInsert > pend.size() / _order)
+		{
+			standardBinary(main, pend);
+			break ;
+		}
+
+		while (nbrInsert > 0)
+		{
+			int jRange = (*itj - (*(itj - 1))) - 1;
+			vit sbegin = pend.begin() + (_order * nbrInsert) - _order;
+			vit send = pend.begin() + (_order * nbrInsert) - 1;
+			vit start = main.begin();
+			int range = (main.size() / _order) - jRange;
+			vit end = main.end() - (range * _order) - 1;
+			
+			binarySearch(main, sbegin, send, start, end);
+			nbrInsert--;
+			pend.erase(sbegin, send + 1);
+		}
+		itj++;
+	}
+}
+
+
 void PmergeVector::binarySort(vi &main, vi& pend, vi &trash)
 {
+	std::vector<long> j = jacobsthal(pend.size() / _order);
 	
-	// use jacobsthal
-	
-	standardBinary(main, pend);
-	
+	std::vector<long>::iterator ite = std::find(j.begin(), j.end(), 3);
+	if (ite == j.end())
+		standardBinary(main, pend);
+	else
+		jacobsthalBinary(main, pend, ite);
 
 	for (vit ite = trash.begin(); ite != trash.end(); ite++)
 		main.push_back(*ite);

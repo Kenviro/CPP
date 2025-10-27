@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:16:02 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/27 17:51:17 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/27 18:28:18 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define vit std::vector<int>::iterator
 # define vi std::vector<int>
 
+std::vector<long> jacobsthal(size_t size);
+
 class PmergeVector {
 
 	private:
@@ -37,6 +39,7 @@ class PmergeVector {
 		void exchangePair(vit first, vit sec);
 		void binarySort(vi &main, vi& pend, vi &trash);
 		void standardBinary(vi &main, vi& pend);
+		void jacobsthalBinary(vi &main, vi &pend, std::vector<long>::iterator itj);
 		void binarySearch(vi &main, vit sbegin, vit send, vit start, vit end);
 		void merge();
 		void insertion();
