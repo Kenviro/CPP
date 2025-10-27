@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:16:02 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/27 16:40:33 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/27 17:51:17 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ class PmergeVector {
 		clock_t _start;
 		PmergeVector();
 		void printVec();
+		void printVec(vit begin, vit end);
 		void exchangePair(vit first, vit sec);
 		void binarySort(vi &main, vi& pend, vi &trash);
 		void standardBinary(vi &main, vi& pend);
-		void binarySearch(vi &main, vi &pend, vit sbegin, vit send, vit start, vit end);
+		void binarySearch(vi &main, vit sbegin, vit send, vit start, vit end);
 		void merge();
 		void insertion();
 

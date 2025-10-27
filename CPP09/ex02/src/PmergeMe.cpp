@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/27 17:00:15 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/27 18:11:26 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,21 @@ void PmergeVector::printVec()
 {
 	vit start = _data.begin();
 	vit end = _data.end();
+	std::cout << "data = ";
 	while (start != end)
 	{
 		std::cout << *start << " ";
 		start++;
+	}
+	std::cout << std::endl;
+}
+
+void PmergeVector::printVec(vit begin, vit end)
+{
+	while (begin != end)
+	{
+		std::cout << *begin << " ; ";
+		begin++;
 	}
 	std::cout << std::endl;
 }
@@ -84,6 +95,7 @@ void PmergeVector::merge()
 {
 	if ((_order * 2) > _data.size())
 	{
+		_order /= 2;
 		insertion();
 		return ;
 	}
@@ -103,7 +115,7 @@ void PmergeVector::merge()
 	merge();
 }
 
-void PmergeVector::binarySearch(vi &main, vi &pend, vit sbegin, vit send, vit start, vit end)
+void PmergeVector::binarySearch(vi &main, vit sbegin, vit send, vit start, vit end)
 {
 	int range = std::distance(start, end + 1) / _order;
 	vit middle = end - 1;
@@ -122,18 +134,18 @@ void PmergeVector::binarySearch(vi &main, vi &pend, vit sbegin, vit send, vit st
 			if (range <= 1)
 			{
 				if (*send <= *end)
-					main.insert(start, sbegin, send);
+					main.insert(start, sbegin, send + 1);
 				else
 					main.insert(end + 1, sbegin, send + 1);
 			}
 			else if (range == 2)
 			{
 				if (*send <= *middle)
-					main.insert(start, sbegin, send);
+					main.insert(start, sbegin, send + 1);
 				else
 				{
 					if (*send <= *end)
-						main.insert(middle + 1, sbegin, send);
+						main.insert(middle + 1, sbegin, send + 1);
 					else
 						main.insert(end + 1, sbegin, send + 1);
 				}
@@ -151,6 +163,7 @@ void PmergeVector::binarySearch(vi &main, vi &pend, vit sbegin, vit send, vit st
 		else
 			start = middle + 1;
 		
+		range = std::distance(start, end + 1) / _order;
 		if (range == 3)
 			middle -= _order;
 		if (range <= 1)
@@ -167,7 +180,7 @@ void PmergeVector::standardBinary(vi &main, vi& pend)
 
 	while (!pend.empty())
 	{
-		binarySearch(main, pend, start, end, main.begin(), main.end() - 1);
+		binarySearch(main, start, end, main.begin(), main.end() - 1);
 		if (start != pend.begin())
 		{
 			start -= _order;
@@ -242,6 +255,8 @@ void PmergeVector::insertion()
 
 void PmergeVector::sort()
 {
+	std::cout << "initial vector\n";
+	printVec();
 	merge();
 	printVec();
 }
