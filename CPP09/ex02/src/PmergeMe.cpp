@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/24 15:43:37 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/27 16:05:34 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,48 +100,17 @@ void PmergeVector::merge()
 	merge();
 }
 
-// vi PmergeVector::createPend()
-// {
-// 	vi pend;
-
-// 	vit first = _data.begin() + (_order - 1);
-// 	vit sec = _data.begin() + (_order * 2 - 1);
-
-// 	while (sec <= _data.end())
-// 	{
-// 		first += _order * 2;
-// 		sec += _order * 2;
-
-// 		pend.insert(pend.end() - 1, sec - (_order - 1), sec);
-// 	}
-
-// 	return pend;
-// }
-
-// vi PmergeVector::createMain()
-// {
-// 	vi main;
-
-// 	vit first = _data.begin() + (_order - 1);
-// 	vit sec = _data.begin() + (_order * 2 - 1);
-
-// 	while (sec <= _data.end())
-// 	{
-// 		first += _order * 2;
-// 		sec += _order * 2;
-
-// 		main.insert(main.end() - 1, first - (_order - 1), first);
-// 	}
-
-// 	return main;
-// }
-
-void PmergeVector::binarySearch(vi &main, vi &pend, vit sbegin, vit send)
+void PmergeVector::binarySearch(vi &main, vi &pend, vit sbegin, vit send, vit start, vit end)
 {
-	vit start = main.begin();
-	vit end = main.end() - 1;
-	vit middle = start + std::distance(start, end);
-	int range = std::distance(start, end) / _order;
+	int range = std::distance(start, end + 1) / _order;
+	vit middle = end - 1;
+
+	if (range == 3)
+		middle -= _order;
+	if (range <= 1)
+		middle = end - (_order * range);
+	else
+		middle = end - ((range / 2) * _order);
 
 	while (true)
 	{
@@ -149,27 +118,53 @@ void PmergeVector::binarySearch(vi &main, vi &pend, vit sbegin, vit send)
 		{
 			if (range <= 1)
 			{
-				// insert 1 after middle or end	
+				// insert 1 after middle or end
 			}
 			else
 			{
 				// insert in right or left of middle
 			}
 		}
+		else if (range == 2)
+		{
+			if (*send <= *middle)
+			{
+				// insert at begin
+			}
+			else
+			{
+				if (*send <= *end)
+				{
+					// insert at mid+1
+				}
+				else
+				{
+					// insert at end+1
+				}
+			}
+		}
+		
 		if (*send <= *middle)
 		{
-			// recalcul mid and make end == mid	
+			if (std::distance(start, end + 1) / _order > 2)
+				end = middle - _order;
+			else
+				end = middle;
 		}
-
-		// setup to redo the iteration in a new range
+		else
+			start = middle + 1;
+		
+		if (range == 3)
+			middle -= _order;
+		if (range <= 1)
+			middle = end - (_order * range);
+		else
+			middle = end - ((range / 2) * _order);
 	}
 }
 
 void PmergeVector::insertion()
 {
-	// vit first = _data.begin() + (_order - 1);
-	// vit sec = _data.begin() + (_order * 2 - 1);
-
 	vi main;
 	vi pend;
 	vi trash;
