@@ -6,11 +6,13 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/27 18:49:31 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/28 13:34:33 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
+
+
 
 std::vector<long> jacobsthal(size_t size)
 {
@@ -101,37 +103,46 @@ void PmergeVector::printVec(vit begin, vit end)
 	std::cout << std::endl;
 }
 
-void PmergeVector::exchangePair(vit first, vit sec)
+void PmergeVector::exchangePair(int i, int j)
 {
-	if (*first <= *sec)
-		return ;
-	vit newPos = sec + 1;
+	int len = _order - 1;
+	int swap = 0;
 
-	std::rotate(first - _order + 1, sec - _order + 1, newPos);
+	while (len >= 0)
+	{
+		swap = _data[i];
+		_data[i] = _data[j];
+		_data[j] = swap;
+
+		i--;
+		j--;
+		len--;
+	}
 }
 
 void PmergeVector::merge()
 {
-	if ((_order * 2) > _data.size())
-	{
-		_order /= 2;
-		insertion();
+	if ((size_t)_order * 2 > _data.size())
 		return ;
-	}
 		
-	vit first = _data.begin() + (_order - 1);
-	vit sec = _data.begin() + (_order * 2 - 1);
+	int i = _order - 1;
+	int j = _order * 2 - 1;
+	int size = _data.size();
 
-	while (sec <= _data.end())
+	while (i < size && j < size)
 	{
-		exchangePair(first, sec);
-		
-		first += _order * 2;
-		sec += _order * 2;
+		if (_data[j] < _data[i])
+			exchangePair(i, j);
+		i = j + _order;
+		j = i + _order;
 	}
 
 	_order *= 2;
 	merge();
+	// std::cout << "before insertion ";
+	// printVec();
+	_order /= 2;
+	insertion();
 }
 
 void PmergeVector::binarySearch(vi &main, vit sbegin, vit send, vit start, vit end)
@@ -215,7 +226,7 @@ void PmergeVector::jacobsthalBinary(vi &main, vi &pend, std::vector<long>::itera
 	while (!pend.empty())
 	{
 		size_t nbrInsert = *itj - (*(itj - 1));
-		if (nbrInsert > pend.size() / _order)
+		if (nbrInsert > (pend.size() / _order))
 		{
 			standardBinary(main, pend);
 			break ;
@@ -229,7 +240,11 @@ void PmergeVector::jacobsthalBinary(vi &main, vi &pend, std::vector<long>::itera
 			vit start = main.begin();
 			int range = (main.size() / _order) - jRange;
 			vit end = main.end() - (range * _order) - 1;
-			
+			std::cout << "order = " << _order << std::endl;
+			printVec(main.begin(), main.end());
+			std::cout << "start [" << *start << "], end[" << *end << "]" << std::endl;
+			printVec(pend.begin(), pend.end());
+			std::cout << "sbegin [" << *sbegin << "], send[" << *send << "]" << std::endl;
 			binarySearch(main, sbegin, send, start, end);
 			nbrInsert--;
 			pend.erase(sbegin, send + 1);
@@ -249,18 +264,28 @@ void PmergeVector::binarySort(vi &main, vi& pend, vi &trash)
 	else
 		jacobsthalBinary(main, pend, ite);
 
-	for (vit ite = trash.begin(); ite != trash.end(); ite++)
-		main.push_back(*ite);
-	trash.clear();
-
+	if (!trash.empty())
+	{
+		for (vit ite = trash.begin(); ite != trash.end(); ite++)
+			main.push_back(*ite);
+		trash.clear();
+	}
+	std::cout << "main after push back trash : ";
+	printVec(main.begin(), main.end());
+	
 }
 
 void PmergeVector::insertion()
 {
+	if ((_data.size() / _order) <= 2)
+		return ;
+	
 	vi main;
 	vi pend;
 	vi trash;
 	
+	if (_order == _data.size() / 2)
+		_order /= 2;
 	for (size_t i = 0; i < _order; i++)
 		main.push_back(_data[i]);
 	for (size_t i = _order; i < _order * 2; i++)
@@ -283,8 +308,8 @@ void PmergeVector::insertion()
 				pend.push_back(_data[i]);
 		}
 		idxPair++;
-
-		if (nbPair == idxPair)
+		
+		if (idxPair >= nbPair)
 		{
 			idxTrash = idxPair * _order;
 			for (; idxTrash < _data.size(); idxTrash++)
@@ -296,17 +321,26 @@ void PmergeVector::insertion()
 	binarySort(main, pend, trash);
 
 	_data = main;
-	if (_order == 1)
-		return ;
+	printVec();
 
 	_order /= 2;
 	insertion();
 }
 
+void PmergeVector::displayInfo()
+{
+	clock_t end = clock() - _start;
+	std::cout << "After :" << std::boolalpha;
+	printVec();
+	std::cout << "Is sorted : " << isSorted(_data.begin(), _data.end()) << std::endl;
+	std::cout << "Time to process a range of " << _data.size() 
+	<< " element with std::vector : " << (float)end / CLOCKS_PER_SEC << std::endl << std::endl;
+}
+
 void PmergeVector::sort()
 {
-	std::cout << "initial vector\n";
+	std::cout << "Before :";
 	printVec();
 	merge();
-	printVec();
+	displayInfo();
 }
