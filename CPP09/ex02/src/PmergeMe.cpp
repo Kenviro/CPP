@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/28 13:34:33 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/28 16:39:17 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ void PmergeVector::jacobsthalBinary(vi &main, vi &pend, std::vector<long>::itera
 
 		while (nbrInsert > 0)
 		{
-			int jRange = (*itj - (*(itj - 1))) - 1;
+			int jRange = (*itj + (*(itj - 1))) - 1;
 			vit sbegin = pend.begin() + (_order * nbrInsert) - _order;
 			vit send = pend.begin() + (_order * nbrInsert) - 1;
 			vit start = main.begin();
