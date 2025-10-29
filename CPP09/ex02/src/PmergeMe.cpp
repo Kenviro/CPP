@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/28 16:39:17 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/29 20:31:29 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void PmergeVector::printVec()
 {
 	vit start = _data.begin();
 	vit end = _data.end();
-	std::cout << "data = ";
 	while (start != end)
 	{
 		std::cout << *start << " ";
@@ -139,8 +138,7 @@ void PmergeVector::merge()
 
 	_order *= 2;
 	merge();
-	// std::cout << "before insertion ";
-	// printVec();
+	
 	_order /= 2;
 	insertion();
 }
@@ -240,11 +238,6 @@ void PmergeVector::jacobsthalBinary(vi &main, vi &pend, std::vector<long>::itera
 			vit start = main.begin();
 			int range = (main.size() / _order) - jRange;
 			vit end = main.end() - (range * _order) - 1;
-			std::cout << "order = " << _order << std::endl;
-			printVec(main.begin(), main.end());
-			std::cout << "start [" << *start << "], end[" << *end << "]" << std::endl;
-			printVec(pend.begin(), pend.end());
-			std::cout << "sbegin [" << *sbegin << "], send[" << *send << "]" << std::endl;
 			binarySearch(main, sbegin, send, start, end);
 			nbrInsert--;
 			pend.erase(sbegin, send + 1);
@@ -270,14 +263,12 @@ void PmergeVector::binarySort(vi &main, vi& pend, vi &trash)
 			main.push_back(*ite);
 		trash.clear();
 	}
-	std::cout << "main after push back trash : ";
-	printVec(main.begin(), main.end());
 	
 }
 
 void PmergeVector::insertion()
 {
-	if ((_data.size() / _order) <= 2)
+	if (_order == 0)
 		return ;
 	
 	vi main;
@@ -321,7 +312,6 @@ void PmergeVector::insertion()
 	binarySort(main, pend, trash);
 
 	_data = main;
-	printVec();
 
 	_order /= 2;
 	insertion();
@@ -330,7 +320,7 @@ void PmergeVector::insertion()
 void PmergeVector::displayInfo()
 {
 	clock_t end = clock() - _start;
-	std::cout << "After :" << std::boolalpha;
+	std::cout << "After : " << std::boolalpha;
 	printVec();
 	std::cout << "Is sorted : " << isSorted(_data.begin(), _data.end()) << std::endl;
 	std::cout << "Time to process a range of " << _data.size() 
@@ -339,7 +329,7 @@ void PmergeVector::displayInfo()
 
 void PmergeVector::sort()
 {
-	std::cout << "Before :";
+	std::cout << "Before : ";
 	printVec();
 	merge();
 	displayInfo();
