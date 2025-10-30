@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:16:02 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/28 13:03:11 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/30 14:08:53 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <algorithm>
 # include <time.h>
 # include <vector>
+# include <deque>
 # include <exception>
 # include <stdexcept>
 # include <sstream>
@@ -37,8 +38,6 @@ bool isSorted(T begin, T end)
 	return true;
 }
 
-std::vector<long> jacobsthal(size_t size);
-
 class PmergeVector {
 
 	private:
@@ -54,6 +53,7 @@ class PmergeVector {
 		void standardBinary(vi &main, vi& pend);
 		void jacobsthalBinary(vi &main, vi &pend, std::vector<long>::iterator itj);
 		void binarySearch(vi &main, vit sbegin, vit send, vit start, vit end);
+		std::vector<long> jacobsthal(size_t size);
 		void merge();
 		void insertion();
 		void displayInfo();
@@ -64,6 +64,40 @@ class PmergeVector {
 		PmergeVector(const PmergeVector& cpy);
 		PmergeVector& operator=(const PmergeVector& src);
 		~PmergeVector();
+
+		void sort();
+
+};
+
+# define dit std::deque<int>::iterator
+# define di std::deque<int>
+
+class PmergeDeque {
+
+	private:
+
+		di _data;
+		size_t	_order;
+		clock_t _start;
+		PmergeDeque();
+		void printDeq();
+		void printDeq(dit begin, dit end);
+		void exchangePair(int i, int j);
+		void binarySort(di &main, di& pend, di &trash);
+		void standardBinary(di &main, di& pend);
+		void jacobsthalBinary(di &main, di &pend, std::deque<long>::iterator itj);
+		void binarySearch(di &main, dit sbegin, dit send, dit start, dit end);
+		std::deque<long> jacobsthal(size_t size);
+		void merge();
+		void insertion();
+		void displayInfo();
+
+	public:
+
+		PmergeDeque(char *input);
+		PmergeDeque(const PmergeDeque& cpy);
+		PmergeDeque& operator=(const PmergeDeque& src);
+		~PmergeDeque();
 
 		void sort();
 

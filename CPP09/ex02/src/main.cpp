@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:37:44 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/28 11:56:40 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/10/30 14:09:35 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ int main(int ac, char **av)
 	
 	try
 	{
-		PmergeVector sort(av[1]);
-		sort.sort();
+		PmergeVector list1(av[1]);
+		list1.sort();
+
+		PmergeDeque list2(av[1]);
+		list2.sort();
 	}
 	catch(const std::exception& e)
 	{
