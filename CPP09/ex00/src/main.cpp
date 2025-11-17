@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 13:52:15 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/23 15:32:15 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/11/17 10:14:35 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int ac, char** av)
 {
 	(void)ac;
 	std::ifstream input(av[1]);
-	if (!input)
+	if (!input.is_open())
 	{
 		std::cerr << "Error: could not open file" << std::endl;
 		return 1;
@@ -30,6 +30,7 @@ int main(int ac, char** av)
 	
 	std::map<Date, double> *dbMap = generateData(db);
 	bitcoinExchange(dbMap, input);
+	delete dbMap;
 
 	return 0;
 }

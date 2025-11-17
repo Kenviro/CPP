@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 11:03:40 by ktintim           #+#    #+#             */
-/*   Updated: 2025/09/23 15:45:45 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/11/17 10:50:40 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,46 +101,54 @@ static Date makeDate(const char* s)
 	return Date(year, month, day);
 }
 
-static std::pair<Date, double> makeMap(std::string line)
+static std::pair<Date, double> makeMap(std::string line, std::string sep)
 {
-	if (line[10] == ',')
-		line[10] = ' ';
-	else
-	{
-		std::string error("Error: invalid line format => ");
-		error += line;
-		throw std::invalid_argument(error.c_str());
-	}
-	
 	std::stringstream ss(line);
 	std::string date;
-	double value;
 	
 	ss >> date;
+	Date d = makeDate(date.c_str());
+	
+	(void)sep;
+	// std::string separ;
+	// ss >> separ;
+	// if (separ != sep)
+	// {
+	// 	std::string error("Error: invalid line format => ");
+	// 	error += line;
+	// 	throw std::invalid_argument(error.c_str());
+	// }
+	
+	double value;
 	ss >> value;
 	if (value < 0)
 		throw std::out_of_range("Error: not a positive number.");
 	if (value > 1000)
 		throw std::out_of_range("Error: too large number.");
 
-	return (std::make_pair(makeDate(date.c_str()), value));
+	return (std::make_pair(d, value));
 }
 
 std::map<Date, double> *generateData(std::ifstream& db)
 {
 	std::map<Date, double> *data = new std::map<Date, double>;
 	std::string line;
-	std::string date;
+	std::getline(db, line);
+	std::stringstream ss(line);
+	std::string sep;
+	
+	ss >> line;
+	ss >> sep;
 	
 	while (std::getline(db, line))
 	{
 		try
 		{
-			data->insert(makeMap(line));
+			data->insert(makeMap(line, sep));
 		}
 		catch(const std::exception& e)
 		{
-			// std::cerr << e.what() << '\n';
+			std::cerr << e.what() << '\n';
 			continue ;
 		}
 	}
