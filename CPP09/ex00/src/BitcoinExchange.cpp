@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 11:03:40 by ktintim           #+#    #+#             */
-/*   Updated: 2025/11/17 10:50:40 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/11/18 10:54:56 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,9 @@ std::map<Date, double> *generateData(std::ifstream& db)
 
 static double foundValue(const char* date, std::map<Date, double> *db)
 {
+	if (!date)
+		throw std::invalid_argument("Error: bad date");
+		
 	Date d = makeDate(date);
 	try
 	{
@@ -173,7 +176,10 @@ static double foundValue(const char* date, std::map<Date, double> *db)
 void bitcoinExchange(std::map<Date, double> *db, std::ifstream& input)
 {
 	std::string line;
-
+	std::string date;
+	double value;
+	double mapValue;
+	
 	while (std::getline(input, line))
 	{
 		try
@@ -188,18 +194,19 @@ void bitcoinExchange(std::map<Date, double> *db, std::ifstream& input)
 			}
 
 			std::stringstream ss(line);
-			std::string date;
-			double value;
-			double mapValue;
 			ss >> date;
 			mapValue = foundValue(date.c_str(), db);
+			std::cout << "mapValue = " << mapValue << std::endl;
 			ss >> value;
 			if (value < 0)
 				throw std::out_of_range("Error: not a positive number.");
 			if (value > 1000)
 				throw std::out_of_range("Error: too large number.");
+
 			double scaledValue = (value * mapValue);
-			std::cout << date << " => " << value << " = " << scaledValue << std::endl; 
+			std::cout << date << 
+			" => " << value << 
+			" = " << scaledValue << std::endl;
 		}
 		catch(const std::exception& e)
 		{

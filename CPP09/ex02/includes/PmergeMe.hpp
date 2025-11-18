@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:16:02 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/30 14:08:53 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/11/18 09:36:14 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@
 # include <sstream>
 # include <iostream>
 
-# define vit std::vector<int>::iterator
-# define vi std::vector<int>
-
 template <class T>
 bool isSorted(T begin, T end)
 {
@@ -37,6 +34,9 @@ bool isSorted(T begin, T end)
 	}
 	return true;
 }
+
+# define vit std::vector<int>::iterator
+# define vi std::vector<int>
 
 class PmergeVector {
 

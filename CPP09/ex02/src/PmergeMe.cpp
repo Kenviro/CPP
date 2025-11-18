@@ -6,7 +6,7 @@
 /*   By: ktintim <ktintim-@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:29:49 by ktintim           #+#    #+#             */
-/*   Updated: 2025/10/30 14:10:13 by ktintim          ###   ########.fr       */
+/*   Updated: 2025/11/18 09:34:54 by ktintim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -522,7 +522,11 @@ void PmergeDeque::binarySearch(di &main, dit sbegin, dit send, dit start, dit en
 
 void PmergeDeque::standardBinary(di &main, di& pend)
 {
-	dit start = pend.end() - _order;
+	dit start;
+	if (pend.size() < _order)
+		start = pend.begin();
+	else
+		start = pend.end() - _order;
 	dit end = pend.end() - 1;
 
 	while (!pend.empty())
